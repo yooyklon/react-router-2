@@ -1,0 +1,396 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #edeaea;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.main-btn {
+  background-color: #7070e5;
+}
+
+.main-btn-err {
+  background-color: #eb4040;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.lenta {
+  max-width: 800px;
+}
+
+.lenta-header {
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post, .show-post {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.post + .post,
+.show-post + .show-post {
+  margin-top: 20px;
+}
+
+.post-user-info,
+.show-post-user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.post-user-imgbox,
+.show-post-user-imgbox {
+  width: 50px;
+  height: 50px;
+  background-color: #aba6a6;
+  border-radius: 50%;
+}
+
+.post-user-box,
+.show-post-user-box {
+  font-size: 14px;
+}
+
+.post-user-info-title
+.show-post-user-info-title {
+  font-size: 16px;
+  color: #3b3bd3;
+}
+
+.post-user-status, .post-usero-date,
+.show-post-user-status, .show-post-usero-date {
+  display: inline-block;
+}
+
+.post-user-date,
+.show-post-user-date {
+  position: relative;
+  margin-left: 20px;
+}
+
+.post-user-date::before,
+.show-post-user-date::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: -10px;
+  width: 5px;
+  height: 5px;
+  background-color: #aba6a6;
+  border-radius: 50%;
+}
+
+.post-content,
+.show-post-content {
+  padding-bottom: 8px;
+  font-size: 23px;
+  border-bottom: 1px solid #d7d3d3;
+}
+
+.post-user-actions,
+.show-post-user-actions {
+  margin-bottom: 10px;
+  display: flex;
+  border-bottom: 1px solid #d7d3d3;
+}
+
+.post-user-actions-box,
+.show-post-user-actions-box {
+  padding: 5px 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.post-user-actions-btn,
+.show-post-user-actions-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.post-user-actions-like,
+.show-post-user-actions-like {
+  width: 23px;
+  height: 21px;
+}
+
+.post-user-actions-like img,
+.show-post-user-actions-like img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-user-actions-comment,
+.show-post-user-actions-comment {
+  width: 20px;
+  height: 20px;
+}
+
+.post-form {
+  display: flex;
+  gap: 10px;
+}
+
+.post-form-imgbox {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #aba6a6;
+  border-radius: 50%;
+}
+
+.post-form-inputbox {
+  position: relative;
+  width: 100%;
+}
+
+.post-form-input {
+  width: 100%;
+  padding: 10px 140px 10px 15px;
+  font-size: 16px;
+  background-color: #f3f3f3;
+  border: 1px solid #d7d3d3;
+  border-radius: 50px;
+}
+
+.post-form-icon {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.post-form-icon-smile {
+  right: 100px;
+}
+
+.post-form-icon-photo {
+  right: 58px;
+}
+
+.post-form-icon-gif {
+  right: 15px;
+}
+
+.post-form-icon-all {
+  display: none;
+  top: 7px;
+  right: 13px;
+  width: 25px;
+  height: 25px;
+}
+
+.create {
+  position: relative;
+  max-width: 800px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.create-header {
+  margin-bottom: 10px;
+}
+
+.create-header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  border: none;
+  background-color: transparent;
+  border-left: 1px solid #c6c6c6;
+  cursor: pointer;
+}
+
+.create-header-btn:first-child {
+  border-left: none;
+}
+
+.create-heder-btn-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.close {
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.create-areabox {
+  position: relative;
+}
+
+.create-area {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 25px;
+  font-size: 16px;
+  border: none;
+  border-top: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
+  resize: none;
+}
+
+.create-area-smile {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.create-area-smile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edit {
+  position: relative;
+  max-width: 800px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.edit-title {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.edit-actions {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  border-bottom: 1px solid #c3c3c3;
+}
+
+.edit-actions-btn {
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.edit-actions-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.edit-actions-text {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.show-post-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.show-post {
+  max-width: 800px;
+}
+
+
+
+
+
+
+
+@media (max-width: 560px) {
+  .post-form-input {
+    padding: 10px 50px 10px 15px;
+  }
+  .post-form-icon-smile,
+  .post-form-icon-photo,
+  .post-form-icon-gif {
+    display: none;
+  }
+  .post-form-icon-all {
+    display: inline-block;
+  }
+  .create-header-btn-text {
+    display: none;
+  }
+
+  .edit-actions {
+    grid-template-columns: 1fr;
+  }
+}

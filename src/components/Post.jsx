@@ -11,13 +11,13 @@ import photo from "../img/icons/photo.svg";
 import gif from "../img/icons/gif.svg";
 import ellipsisColor from "../img/icons/ellipsis-colar.svg";
 
-export default function Post({ content, id, created }) {
+export default function Post({ content, id, created, url }) {
   return (
     <Link to={`/posts/${id}`}>
       <div className="post">
         <div className="post-user-info">
           <div className="post-user-imgbox">
-            <img className="post-user-info-img" src="" alt="" />
+            <img className="post-user-img" src={url} alt="" />
           </div>
           <div className="post-user-box">
             <h3 className="post-user-name">Linaz Gilyazov</h3>
@@ -48,7 +48,7 @@ export default function Post({ content, id, created }) {
         </div>
         <form className="post-form">
           <div className="post-form-imgbox">
-            <img className="post-form-img" src="" alt="" />
+            <img className="post-form-img" src={url} alt="" />
           </div>
           <div className="post-form-inputbox">
             <input
@@ -73,3 +73,7 @@ export default function Post({ content, id, created }) {
     </Link>
   );
 }
+
+Post.defaultProps = {
+  url: "https://www.ejin.ru/wp-content/uploads/2019/05/cvety-u-podnozhija-gor.jpg",
+};

@@ -16,7 +16,14 @@ export default function ShowPost({ list, onRemovePost }) {
     <div className="show-post">
       <div className="show-post-user-info">
         <div className="show-post-user-imgbox">
-          <img className="show-post-user-info-img" src="" alt="" />
+          <img
+            className="show-post-user-img"
+            src={
+              !currentElement.url &&
+              "https://www.ejin.ru/wp-content/uploads/2019/05/cvety-u-podnozhija-gor.jpg"
+            }
+            alt=""
+          />
         </div>
         <div className="show-post-user-box">
           <h3 className="show-post-user-name">Linaz Gilyazov</h3>

@@ -16,19 +16,37 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:7777/posts")
-      .then((response) => response.json())
-      .then((data) => setList(data));
+    getList();
   }, []);
 
+  async function getList() {
+    const count = list.length;
+
+    const response = await fetch("http://localhost:7777/posts");
+    const data = await response.json();
+
+    setList(data);
+
+    if (data.length === count) {
+      const response = await fetch("http://localhost:7777/posts");
+      const data = await response.json();
+
+      setList(data);
+    }
+  }
+
   function handleSubmit(value) {
+
     fetch('http://localhost:7777/posts', {
       method: "post",
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ id: 0, content: value })
-    })
+    });
+
+    getList();
+
     navigate('/');
   }
 
@@ -45,24 +63,13 @@ function App() {
     navigate("/");
   }
 
-  function handleEditPost(id, value) {
-    fetch(`http://localhost:7777/posts`, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: id, content: value })
-    });
-    navigate('/');
-  }
-
   return (
     <div className="container">
       <Routes>
         <Route path='/' exact element={<Lenta list={list} />} />
         <Route path='/posts/new' element={<Create onSubmit={handleSubmit} />} />
         <Route path='/posts/:id' element={<ShowPost list={list} onRemovePost={handleRemovePost} />} />
-        <Route path='/posts/edit/:id' element={<Edit onEditPost={handleEditPost} />} />
+        <Route path='/posts/edit/:id' element={<Edit list={list} getList={getList} />} />
       </Routes>
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import smile from "../img/icons/smile.svg";
 import photoGaleryColar from "../img/icons/photo-galery-colar.svg";
@@ -9,13 +9,30 @@ import gifColar from "../img/icons/gif-colar.svg";
 import userColar from "../img/icons/user-colar.svg";
 import positionColar from "../img/icons/position-colar.svg";
 
-export default function Edit({ onEditPost }) {
-  const [value, setValue] = useState();
-
+export default function Edit({ list, getList }) {
   const params = useParams();
+  const navigate = useNavigate();
+
+  const currentElement = list.find((el) => el.id === +params.id);
+
+  const [value, setValue] = useState(currentElement.content);
 
   function handleChange(event) {
     setValue(event.target.value);
+  }
+
+  function handleEditPost(id, value) {
+    fetch(`http://localhost:7777/posts`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: id, content: value }),
+    });
+
+    getList();
+
+    navigate("/");
   }
 
   return (
@@ -62,7 +79,7 @@ export default function Edit({ onEditPost }) {
       </div>
       <button
         className="btn main-btn"
-        onClick={() => onEditPost(+params.id, value)}
+        onClick={() => handleEditPost(+params.id, value)}
       >
         Сохранить
       </button>
